@@ -19,13 +19,13 @@ class ADPredict:
         models_dir,
         image_paths,
         val_images_path,
-        output_dir,
+        output_dir="predictions",
         device='auto',
         seed=42,
         deterministic=False,
         optuna_trials=30,
-        val_samples=50,
-        wbf_conf_type="avg",
+        val_samples=200,
+        wbf_conf_type="avg", # or max
         conf_range=(0.005, 0.5),
         iou_range=(0.3, 0.7),
         skip_box_range=(0.001, 0.05),
@@ -270,13 +270,9 @@ class ADPredict:
         return self.run()
     
 # predictor = ADPredict(
-#     models_dir="/kaggle/input/notebooks/antonoof/notebookc5a4dd71e8/result",
-#     image_paths="/kaggle/input/competitions/duality-course-1-synthetic-to-real-object-detection-challenge/archive/Synthetic to Real Object Detection Challenge/data/test/images",
-#     val_images_path="/kaggle/input/competitions/duality-course-1-synthetic-to-real-object-detection-challenge/archive/Synthetic to Real Object Detection Challenge/data/val/images",
-#     output_dir="/kaggle/working/predictions/labels",
-#     optuna_trials=1,         # counts trials for Optuna
-#     val_samples=100,         # numbers of validation images to find best params
-#     wbf_conf_type="avg",     # or "max"
+#     models_dir=result_dir,
+#     image_paths=test_images,
+#     val_images_path=val_data,
 # )
 
 # predictor()

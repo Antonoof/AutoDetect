@@ -14,10 +14,12 @@ class AutoDetect:
             train, val,
             model='x',
             epochs=30,
+            model_config = (('yolov8', 1280), ('yolo11', 960), ('yolo12', 1024)),
             warmup=False,
             inference_speed=-1,
             seed=42
     ):
+        self.model_config = model_config
         self.epochs=epochs
         self.model = model
         self.target_dir = 'result'
@@ -82,44 +84,37 @@ names: {names}"""
     def random_params(self):
         params = {
             'patience': 100,
-            'optimizer': 'SGD' if random.random() < 0.7 else 'Adam',
-            'momentum': round(random.uniform(0.90, 0.97), 3),
-            'lr0': round(0.0005 * random.uniform(0.8, 1.2), 7),
-            'lrf': round(0.01 * random.uniform(0.5, 2.0), 5),
-            'weight_decay': round(0.0001 * random.uniform(0.5, 2.0), 7),
+            'optimizer': 'SGD',
+            'lr0': round(0.001 * random.uniform(0.8, 1.2), 6),
+            'lrf': round(0.001 * random.uniform(0.8, 1.2), 6),
+            'weight_decay': round(0.0003 * random.uniform(0.7, 1.3), 6),
             'cos_lr': True,
-            'save_period': 20,
-            'workers': 2,
-            'close_mosaic': max(0, int(5 + random.uniform(-2, 3))),
-            'freeze': max(0, int(4 + random.uniform(-2, 2))),
-            'hsv_h': round(0.015 * random.uniform(0.7, 1.3), 4),
-            'hsv_s': round(0.7 * random.uniform(0.7, 1.3), 3),
-            'hsv_v': round(0.4 * random.uniform(0.7, 1.3), 3),
-            'flipud': round(random.uniform(0.3, 0.7), 2),
-            'fliplr': round(random.uniform(0.3, 0.7), 2),
-            'translate': round(0.1 * random.uniform(0.7, 1.3), 3),
-            'scale': round(0.5 * random.uniform(0.7, 1.3), 3),
-            'shear': round(0.01 * random.uniform(0.5, 2.0), 4),
-            'mixup': round(random.uniform(0.0, 0.1), 3),
-            'cutmix': round(random.uniform(0.0, 0.1), 3),
+            'save_period': max(1, int(10 + random.uniform(-2, 3))),
+            'workers': 4,
+            'close_mosaic': max(0, int(5 + random.uniform(-1, 2))),
+            'hsv_h': round(random.uniform(0.0, 0.03), 4),
+            'hsv_s': round(random.uniform(0.0, 0.03), 4),
+            'hsv_v': round(random.uniform(0.0, 0.03), 4),
+            'flipud': 0.0,
+            'fliplr': round(random.uniform(0.4, 0.6), 2),
+            'translate': round(random.uniform(0.005, 0.015), 4),
+            'scale': round(random.uniform(0.2, 0.3), 3),
+            'shear': round(random.uniform(0.03, 0.07), 3),
+            'mixup': round(random.uniform(0.03, 0.07), 3),
+            'cutmix': round(random.uniform(0.07, 0.13), 3),
             'warmup_epochs': max(0, int(3 + random.uniform(-1, 2))),
-            'warmup_momentum': round(random.uniform(0.90, 0.97), 3),
+            'warmup_momentum': round(random.uniform(0.95, 1.0), 3),
             'augment': True,
-            'conf': round(0.001 * random.uniform(0.3, 1.5), 6),
+            'conf': round(0.001 * random.uniform(0.5, 1.5), 6),
             'iou': round(random.uniform(0.25, 0.35), 2),
-            'deterministic': True,
+            'freeze': max(0, int(4 + random.uniform(-1, 2))),
         }
 
         return params
 
     def learn_MVP(self, model):
-        model_config = (
-            ('yolov8', 1280),
-            ('yolo11', 960),
-            ('yolo26', 1024)
-        )
 
-        for i, (model_name, imgsz) in enumerate(model_config):
+        for i, (model_name, imgsz) in enumerate(self.model_config):
             model_i = YOLO(model_name + model + '.pt')
             print(f"⌛⌛⌛   Start Learn model: {model_name + model}   ⌛⌛⌛")
 
@@ -145,10 +140,7 @@ names: {names}"""
 
 # ad = AutoDetect(
 #     train=train_data,
-#     val=val_data,
-#     model='n',
-#     warmup=False,
-#     inference_speed=-1,
+#     val=val_data
 # )
 
 # ad.fit()
