@@ -1,27 +1,27 @@
 ## AutoDetect — an AutoML framework for object detection that automatically trains ensemble YOLO models, optimizes hyperparameters with Optuna, and fuses predictions using Weighted Box Fusion (WBF) for state-of-the-art results.
 
-## Example Notebook: [example Notebook](https://www.kaggle.com/code/antonoof/ad-autodetect-model-n?scriptVersionId=311074814)
+### Example Notebook: [example Notebook](https://www.kaggle.com/code/antonoof/ad-autodetect-model-n?scriptVersionId=311074814)
 
-## Features:
+### Features:
 
-### 1. Ensemble Learning: Combines predictions from multiple YOLO architectures (yolov8, yolo11, yolo12) with different input resolutions.
+#### 1. Ensemble Learning: Combines predictions from multiple YOLO architectures (yolov8, yolo11, yolo12) with different input resolutions.
 
-### Optuna Hyperparameter Search: Automatically finds optimal conf_thresh, iou_thresh, and box filtering parameters for WBF.
+#### Optuna Hyperparameter Search: Automatically finds optimal conf_thresh, iou_thresh, and box filtering parameters for WBF.
 
-### Weighted Box Fusion (WBF): Advanced box merging strategy (avg or max confidence aggregation) for robust inference.
+#### Weighted Box Fusion (WBF): Advanced box merging strategy (avg or max confidence aggregation) for robust inference.
 
-### GPU-Accelerated: Built on PyTorch and Ultralytics for fast training and inference.
+#### GPU-Accelerated: Built on PyTorch and Ultralytics for fast training and inference.
 
-### Stratified Validation Sampling: Configurable validation subset for efficient hyperparameter tuning.
+#### Stratified Validation Sampling: Configurable validation subset for efficient hyperparameter tuning.
 
-### Reproducibility: Full seed control and optional deterministic mode for consistent results.
+#### Reproducibility: Full seed control and optional deterministic mode for consistent results.
 
-## Installation:
+### Installation:
 ```bash
 pip install git+https://github.com/Antonoof/AutoDetect.git@main
 ```
 
-## 🗂️ Dataset Structure:
+### 🗂️ Dataset Structure:
 ```
 dataset/
 ├── train/
@@ -34,7 +34,7 @@ dataset/
     └── images/   # Test images for inference (no labels required)
 ```
 
-## Training: AutoDetect
+### Training: AutoDetect
 ```Python
 from autodetect import AutoDetect
 
@@ -57,7 +57,7 @@ ad = AutoDetect(
 ad.fit()  # Start training and ensemble building
 ```
 
-## Inference: ADPredict
+### Inference: ADPredict
 ```Python
 from autodetect import ADPredict
 
@@ -82,18 +82,18 @@ predictor = ADPredict(
 results = predictor.predict()
 ```
 
-## Output Format:
+### Output Format:
 #### Predictions are saved in:
 - predictions/ — visualized images with bounding boxes
 - predictions/results.csv — tabular results: [image_name, class_id, confidence, x1, y1, x2, y2]
 - predictions/wbf_params.json — best WBF parameters found by Optuna
 
-## Roadmap updates:
+#### Roadmap updates:
 | Version | Planned Improvements |
 |---------|---------------------|
 | **v0.2.\*** | Enhanced hyperparameter stability, improved training convergence, better logging |
 | **v0.3.\*** | GPU memory optimization, automatic model sizing based on image count/resolution, inference timing metrics |
 | **v0.4.\*** | LR warmup scheduler, DINO-based validation split for stable training, time-aware hyperparameter search |
 | **v0.5.\*** | Integration with [3LC](https://3lc.ai) or similar for active learning and bbox refinement |
-| **v0.6.\*** | Advanced augmentation pipeline, Falcon-based synthetic image generation during training |
+| **v0.6.\*** | Advanced augmentation pipeline, use [Duality](https://www.duality.ai/) synthetic image generation during training |
 | **v0.7.\*** | SAHI integration for small-object detection, sliding-window inference support |
