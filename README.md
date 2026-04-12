@@ -77,11 +77,25 @@ predictor = ADPredict(
 results = predictor.predict()
 ```
 
-### Output Format:
-#### Predictions are saved in:
-- predictions/ — visualized images with bounding boxes
-- predictions/results.csv — tabular results: [image_name, class_id, confidence, x1, y1, x2, y2]
-- predictions/wbf_params.json — best WBF parameters found by Optuna
+### Output Format
+#### Predictions are saved in `output_dir/` (default: `"predictions"`) as `<image_name>_i.txt` files, where `i` is the image index.
+
+### File Format
+#### Each line represents one detected object in **space-separated** format:
+| Field | Type | Range | Description |
+|-------|------|-------|-------------|
+| `class_id` | `int` | `0, 1, 2, ...` | Predicted class index |
+| `confidence` | `float` | `[0.0, 1.0]` | Confidence score of the prediction |
+| `x_center` | `float` | `[0.0, 1.0]` | Normalized X coordinate of box center |
+| `y_center` | `float` | `[0.0, 1.0]` | Normalized Y coordinate of box center |
+| `width` | `float` | `[0.0, 1.0]` | Normalized box width |
+| `height` | `float` | `[0.0, 1.0]` | Normalized box height |
+
+## Example (`image_0.txt`)
+```txt
+0 0.625189 0.497187 0.149444 0.194430 0.050108
+0 0.596752 0.961163 0.929023 0.077674 0.140234
+```
 
 #### Roadmap updates:
 | Version | Planned Improvements |
