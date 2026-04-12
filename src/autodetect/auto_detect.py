@@ -14,7 +14,7 @@ class AutoDetect:
             train, val,
             model='x',
             epochs=30,
-            model_config = (('yolov8', 1280), ('yolo11', 960), ('yolo12', 1024)),
+            model_config = (('yolov8', 1024), ('yolo11', 960), ('yolo12', 768)),
             device=None,
             warmup=False,
             inference_speed=-1,
@@ -90,7 +90,7 @@ names: {names}"""
     def random_params(self):
         params = {
             'patience': 100,
-            'batch': random.choice([8, 16, 32, 64]) if self.model not in ('x', 'l') else -1,
+            'batch': random.choice([8, 16, 32]) if self.model not in ('x', 'l') else -1,
             'optimizer': 'SGD',
             'lr0': round(0.001 * random.uniform(0.8, 1.2), 6),
             'lrf': round(0.001 * random.uniform(0.8, 1.2), 6),
