@@ -139,15 +139,12 @@ names: {names}"""
         self.learn_MVP(model=self.model)
 
 
-train_data="/kaggle/input/competitions/duality-course-1-synthetic-to-real-object-detection-challenge/archive/Synthetic to Real Object Detection Challenge/data/train"
-val_data="/kaggle/input/competitions/duality-course-1-synthetic-to-real-object-detection-challenge/archive/Synthetic to Real Object Detection Challenge/data/val" 
+# ad = AutoDetect(
+#     train=train_data,
+#     val=val_data,
+#     model='n',
+#     warmup=False,
+#     inference_speed=-1,
+# )
 
-ad = AutoDetect(
-    train=train_data,
-    val=val_data,
-    model='n',
-    warmup=False,
-    inference_speed=-1,
-)
-
-ad.fit()
+# ad.fit()

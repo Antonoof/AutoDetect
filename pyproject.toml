@@ -4,7 +4,7 @@ build-backend = "setuptools.build_meta"
 
 [project]
 name = "autodetect"
-version = "0.1.0"
+version = "0.1.1"
 description = "AutoML model AutoDetect which automatically learns and predicts"
 readme = "README.md"
 license = {text = "MIT"}
