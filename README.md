@@ -91,7 +91,7 @@ results = predictor.predict()
 | `width` | `float` | `[0.0, 1.0]` | Normalized box width |
 | `height` | `float` | `[0.0, 1.0]` | Normalized box height |
 
-## Example (`image_0.txt`)
+## Example (`<image_name>.txt`)
 ```txt
 0 0.625189 0.497187 0.149444 0.194430 0.050108
 0 0.596752 0.961163 0.929023 0.077674 0.140234
