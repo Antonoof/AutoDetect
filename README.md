@@ -78,7 +78,7 @@ results = predictor.predict()
 ```
 
 ### Output Format
-#### Predictions are saved in `output_dir/` (default: `"predictions"`) as `<image_name>_i.txt` files, where `i` is the image index.
+#### Predictions are saved in `output_dir/` (default: `"predictions"`) as `<image_name>.txt` files.
 
 ### File Format
 #### Each line represents one detected object in **space-separated** format:
