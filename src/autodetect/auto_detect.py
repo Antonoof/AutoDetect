@@ -15,6 +15,7 @@ class AutoDetect:
             model='x',
             epochs=30,
             model_config = (('yolov8', 1280), ('yolo11', 960), ('yolo12', 1024)),
+            device=None,
             warmup=False,
             inference_speed=-1,
             seed=42
@@ -24,6 +25,11 @@ class AutoDetect:
         self.model = model
         self.target_dir = 'result'
         os.makedirs(self.target_dir, exist_ok=True)
+
+        if device:
+            self.device = device
+        else:
+            self.device = 0 if torch.cuda.is_available() else "cpu"
 
         self.set_seed(seed)
         self.create_yaml(train, val)
@@ -84,6 +90,7 @@ names: {names}"""
     def random_params(self):
         params = {
             'patience': 100,
+            'batch': random.choice([8, 16, 32, 64]) if self.model not in ('x', 'l') else -1,
             'optimizer': 'SGD',
             'lr0': round(0.001 * random.uniform(0.8, 1.2), 6),
             'lrf': round(0.001 * random.uniform(0.8, 1.2), 6),
@@ -124,6 +131,7 @@ names: {names}"""
                     epochs=self.epochs,
                     imgsz=imgsz,
                     seed=self.seed,
+                    device=self.device,
                     **params
             )
 
