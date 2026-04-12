@@ -13,10 +13,12 @@ class AutoDetect:
             self,
             train, val,
             model='x',
+            epochs=30,
             warmup=False,
             inference_speed=-1,
             seed=42
     ):
+        self.epochs=epochs
         self.model = model
         self.target_dir = 'result'
         os.makedirs(self.target_dir, exist_ok=True)
@@ -122,7 +124,7 @@ names: {names}"""
             params = self.random_params()
             model_i.train(
                     data=self.yaml,
-                    epochs=1,
+                    epochs=self.epochs,
                     imgsz=imgsz,
                     seed=self.seed,
                     **params
