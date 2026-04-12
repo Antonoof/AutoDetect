@@ -1,0 +1,38 @@
+[build-system]
+requires = ["setuptools>=61.0", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "autodetect"
+version = "0.1.0"
+description = "AutoML model AutoDetect which automatically learns and predicts"
+readme = "README.md"
+license = {text = "MIT"}
+authors = [
+    {name = "Antonoof", email = "artem.antonov.cv@bk.ru"}
+]
+requires-python = ">=3.9"
+dependencies = [
+    "ultralytics>=8.4.25",
+    "ensemble-boxes>=1.0.4",
+    "optuna>=3.5.0",
+    "torch>=2.0.0",
+    "opencv-python>=4.8.0",
+    "numpy>=1.24.0",
+    "pandas>=2.0.0",
+]
+classifiers = [
+    "Programming Language :: Python :: 3",
+    "License :: OSI Approved :: MIT License",
+    "Operating System :: OS Independent",
+    "Development Status :: 3 - Alpha",
+    "Intended Audience :: Science/Research",
+    "Topic :: Scientific/Engineering :: Artificial Intelligence",
+]
+
+[project.urls]
+"Homepage" = "https://github.com/Antonoof/AutoDetect"
+"Bug Tracker" = "https://github.com/Antonoof/AutoDetect/issues"
+
+[tool.setuptools.packages.find]
+where = ["src"]
