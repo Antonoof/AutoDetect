@@ -16,9 +16,9 @@ class ADPredict:
 
     def __init__(
         self,
-        models_dir,
         image_paths,
         val_images_path,
+        models_dir="result",
         output_dir="predictions",
         device='auto',
         seed=42,
@@ -32,8 +32,8 @@ class ADPredict:
         model_weights=None
     ):
         self.models_dir = Path(models_dir)
-        self.test_img_dir = Path(image_paths)
-        self.val_img_dir = Path(val_images_path)
+        self.test_img_dir = Path(image_paths + '/images')
+        self.val_img_dir = Path(val_images_path + '/images')
         self.output_dir = Path(output_dir)
         self.output_dir.mkdir(parents=True, exist_ok=True)
 
@@ -270,7 +270,6 @@ class ADPredict:
         return self.run()
     
 # predictor = ADPredict(
-#     models_dir=result_dir,
 #     image_paths=test_images,
 #     val_images_path=val_data,
 # )
