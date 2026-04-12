@@ -5,16 +5,11 @@
 ### Features:
 
 #### 1. Ensemble Learning: Combines predictions from multiple YOLO architectures (yolov8, yolo11, yolo12) with different input resolutions.
-
-#### Optuna Hyperparameter Search: Automatically finds optimal conf_thresh, iou_thresh, and box filtering parameters for WBF.
-
-#### Weighted Box Fusion (WBF): Advanced box merging strategy (avg or max confidence aggregation) for robust inference.
-
-#### GPU-Accelerated: Built on PyTorch and Ultralytics for fast training and inference.
-
-#### Stratified Validation Sampling: Configurable validation subset for efficient hyperparameter tuning.
-
-#### Reproducibility: Full seed control and optional deterministic mode for consistent results.
+#### 2. Optuna Hyperparameter Search: Automatically finds optimal conf_thresh, iou_thresh, and box filtering parameters for WBF.
+#### 3. Weighted Box Fusion (WBF): Advanced box merging strategy (avg or max confidence aggregation) for robust inference.
+#### 4. GPU-Accelerated: Built on PyTorch and Ultralytics for fast training and inference.
+#### 5. Stratified Validation Sampling: Configurable validation subset for efficient hyperparameter tuning.
+#### 6. Reproducibility: Full seed control and optional deterministic mode for consistent results.
 
 ### Installation:
 ```bash
