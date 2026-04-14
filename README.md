@@ -1,6 +1,8 @@
 ## AutoDetect — an AutoML framework for object detection that automatically trains ensemble YOLO models, optimizes hyperparameters with Optuna, and fuses predictions using Weighted Box Fusion (WBF) for state-of-the-art results.
 
-### Example Notebook: [example Notebook](https://www.kaggle.com/code/antonoof/ad-autodetect-model-n?scriptVersionId=311074814)
+### Example Notebooks: [simple Notebook](https://www.kaggle.com/code/antonoof/ad-autodetect-model-x?scriptVersionId=311081670), [list datasets Notebook](https://www.kaggle.com/code/antonoof/autodetect-multi-instance-object-detection#Find-best-params-and-predict)
+
+### Video: <a href="https://www.youtube.com/watch?v=6IvW-v0rB7g" target="_blank"><img alt="YouTube" src="https://img.shields.io/badge/YouTube-FF0000?style=for-the-badge&logo=youtube&logoColor=white"/></a>
 
 ### Features:
 
