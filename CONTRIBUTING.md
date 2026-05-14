@@ -14,7 +14,7 @@ I welcome suggestions and feedback. I review all contributions carefully to main
    - Share ideas for improvements
    - Ask questions about usage
    
-   **Link**: [GitHub Discussions](https://github.com/Antonoof/AutoDetect/discussions)
+   **Link**: [GitHub Discussions](https://github.com/Antonoof/AutoDetect/discussions/1)
 
 2. **Share examples or use cases**
    - How are you using AutoDetect?
