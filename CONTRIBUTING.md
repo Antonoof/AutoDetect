@@ -60,10 +60,10 @@ What happened?
 
 **To reproduce**
 Minimal code example:
-```python
+
 from autodetect import AutoDetect
 ad = AutoDetect(...)
-```
+
 **Environment**
 - AutoDetect version: [e.g., 0.1.0]
 - Python version: [e.g., 3.10]
